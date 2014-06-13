@@ -1,0 +1,20 @@
+[16h:29m:42s]
+	UDP Message [IAM~getPort()]:
+	WrongFormatException:
+Bad port format
+
+[16h:29m:42s]
+	UDP Message [IAM~getPort()]:
+	WrongFormatException:
+Bad port format
+
+[19h:39m:26s]
+	UDP Message [IAM~getMachine()]:
+	WrongFormatException:
+Bad address format
+
+[19h:39m:26s]
+	UDP Message [IAM~getMachine()]:
+	WrongFormatException:
+Bad address format
+

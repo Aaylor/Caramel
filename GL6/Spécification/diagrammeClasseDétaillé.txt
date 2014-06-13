@@ -1,0 +1,1 @@
+Ceci est le diagramme de classe du projet. Le packetage formats n'est pas détaillé pour des raisons de lisibilités.

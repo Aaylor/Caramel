@@ -1,0 +1,10 @@
+#!/bin/sh
+
+DIR=$(pwd)/bin/production/PROJET_PR6/
+LIBS=
+
+echo $DIR
+
+[ ! -d bin/production ] && echo "No compiled source." && exit 1
+
+java -classpath "$DIR:$LIBS" Caramel $@

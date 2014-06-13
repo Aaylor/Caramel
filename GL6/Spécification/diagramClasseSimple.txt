@@ -1,0 +1,1 @@
+Ceci est un diagramme de classe simlifié ne présentant que les classes et leurs relations, le packetage formats n'est pas détaillé pour des raisons de lisibilités.

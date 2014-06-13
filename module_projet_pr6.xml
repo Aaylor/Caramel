@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_projet_pr6" default="compile.module.projet_pr6">
+  <dirname property="module.projet_pr6.basedir" file="${ant.file.module_projet_pr6}"/>
+  
+  
+  <property name="compiler.args.projet_pr6" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="projet_pr6.output.dir" value="${module.projet_pr6.basedir}/bin/production/PROJET_PR6"/>
+  <property name="projet_pr6.testoutput.dir" value="${module.projet_pr6.basedir}/bin/test/PROJET_PR6"/>
+  
+  <path id="projet_pr6.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="projet_pr6.module.production.classpath">
+    <path refid="library.junit.classpath"/>
+    <path refid="library.junit-4.11.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+  </path>
+  
+  <path id="projet_pr6.runtime.production.module.classpath">
+    <pathelement location="${projet_pr6.output.dir}"/>
+    <path refid="library.junit.classpath"/>
+    <path refid="library.junit-4.11.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+  </path>
+  
+  <path id="projet_pr6.module.classpath">
+    <pathelement location="${projet_pr6.output.dir}"/>
+    <path refid="library.junit.classpath"/>
+    <path refid="library.junit-4.11.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+  </path>
+  
+  <path id="projet_pr6.runtime.module.classpath">
+    <pathelement location="${projet_pr6.testoutput.dir}"/>
+    <pathelement location="${projet_pr6.output.dir}"/>
+    <path refid="library.junit.classpath"/>
+    <path refid="library.junit-4.11.classpath"/>
+    <path refid="library.hamcrest-core-1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.projet_pr6">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.projet_pr6">
+    <patternset refid="excluded.from.module.projet_pr6"/>
+  </patternset>
+  
+  <path id="projet_pr6.module.sourcepath">
+    <dirset dir="${module.projet_pr6.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <path id="projet_pr6.module.test.sourcepath">
+    <dirset dir="${module.projet_pr6.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.projet_pr6" depends="compile.module.projet_pr6.production,compile.module.projet_pr6.tests" description="Compile module PROJET_PR6"/>
+  
+  <target name="compile.module.projet_pr6.production" description="Compile module PROJET_PR6; production classes">
+    <mkdir dir="${projet_pr6.output.dir}"/>
+    <javac destdir="${projet_pr6.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.projet_pr6}"/>
+      <bootclasspath refid="projet_pr6.module.bootclasspath"/>
+      <classpath refid="projet_pr6.module.production.classpath"/>
+      <src refid="projet_pr6.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.projet_pr6"/>
+    </javac>
+    
+    <copy todir="${projet_pr6.output.dir}">
+      <fileset dir="${module.projet_pr6.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.projet_pr6.tests" depends="compile.module.projet_pr6.production" description="compile module PROJET_PR6; test classes" unless="skip.tests">
+    <mkdir dir="${projet_pr6.testoutput.dir}"/>
+    <javac destdir="${projet_pr6.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.projet_pr6}"/>
+      <bootclasspath refid="projet_pr6.module.bootclasspath"/>
+      <classpath refid="projet_pr6.module.classpath"/>
+      <src refid="projet_pr6.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.projet_pr6"/>
+    </javac>
+    
+    <copy todir="${projet_pr6.testoutput.dir}">
+      <fileset dir="${module.projet_pr6.basedir}/test">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.projet_pr6" description="cleanup module">
+    <delete dir="${projet_pr6.output.dir}"/>
+    <delete dir="${projet_pr6.testoutput.dir}"/>
+  </target>
+</project>
